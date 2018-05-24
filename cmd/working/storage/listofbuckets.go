@@ -28,6 +28,7 @@ type BucketObject struct {
 func main() {
 	ctx := context.Background()
 
+	// TODO: check scope
 	cli, err := google.DefaultClient(ctx, storage.CloudPlatformScope)
 	if err != nil {
 		log.Fatal("1\n\n", err)
