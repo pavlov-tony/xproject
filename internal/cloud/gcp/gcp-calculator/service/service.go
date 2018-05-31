@@ -1,7 +1,7 @@
 package service
 
 import (
-	"log"
+	"fmt"
 	"net/http"
 	"os"
 
@@ -13,27 +13,32 @@ type Service struct {
 	skus []b.Sku // how to make b.*(Sku), need type *Sku from b
 }
 
-// init slice of Skus
-func (s *Service) New() {
+// init or redo slice of Sku
+func (s *Service) New(serviceId string) error {
 	client := &http.Client{
 		Transport: &transport.APIKey{Key: os.Getenv("DEVKEY")},
 	}
 
 	billClient, err := b.New(client)
-
 	if err != nil {
-		log.Fatal(err)
+		return fmt.Errorf("Failed to get sku list: %v", err)
 	}
 
-	l, err := billClient.Services.Skus.List("services/6F81-5844-456A").Do()
+	l, err := billClient.Services.Skus.List("services/" + serviceId).Do()
 	if err != nil {
-		log.Fatal(err)
+		return fmt.Errorf("Failed to get sku list: %v", err)
 	}
+
+	s.skus = nil
 
 	for i := range l.Skus {
 		s.skus = append(s.skus, *(l.Skus[i]))
 	}
+	if s.skus == nil {
+		return fmt.Errorf("Empty sku list")
+	}
 
+	return nil
 }
 
 // this function returns type PricingInfo from billing api, we took PricingInfo[0] because it's the latest
@@ -42,8 +47,8 @@ func (s *Service) GetPriceInfoBySku(id string) (price b.PricingInfo) {
 	for _, val := range s.skus {
 		if val.SkuId == id {
 			price = *val.PricingInfo[0]
+			break
 		}
-		break
 	}
 
 	return price
