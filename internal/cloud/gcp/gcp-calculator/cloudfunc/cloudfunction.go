@@ -2,33 +2,41 @@ package cloudfunction
 
 import (
 	"fmt"
-	ser "gcp-calculator/service"
 	"math"
+
+	ser "../service"
 )
 
 const (
-	CPUTime       = "C024-9C10-2A5B"
-	Invocations   = "8E10-82EB-6917"
-	MemoryTime    = "F01C-3EA0-06CD"
+	// CPUTime is the amount of time, on average, you expect your function to run each time it is invoked
+	CPUTime = "C024-9C10-2A5B"
+
+	// Invocations is the number of times per month that you expect your function to run
+	Invocations = "8E10-82EB-6917"
+
+	// MemoryTime is the maximum amount of memory that your function will need
+	MemoryTime = "F01C-3EA0-06CD"
+
+	// NetworkEgress is the amount of data transferred out of your function each time it is invoked
 	NetworkEgress = "4BAF-1AD8-483C"
 )
 
+// ServiceInfo contains parameters of Cloud Functions service
 type ServiceInfo struct {
 	MemoryUsage  float64
-	CpuUsage     float64
-	CpuType      string
+	CPUUsage     float64
+	CPUType      string
 	Time         float64
 	NetworkUsage float64
 	NetworkType  string
 	Invocations  float64
 }
 
-// example: ServiceInfo{128, 200, "MHz", 300, 0, "KB", 10000000}, "29E7-DA93-CA13")
-
-func Calculate(s ServiceInfo, serviceId string) (float64, error) {
-
+// Calculate prising for Cloud Functions service
+// Example: ServiceInfo{128, 200, "MHz", 300, 0, "KB", 10000000}, "29E7-DA93-CA13")
+func Calculate(s ServiceInfo, serviceID string) (float64, error) {
 	var serv ser.Service
-	err := serv.New(serviceId)
+	err := serv.New(serviceID)
 	if err != nil {
 		return 0, fmt.Errorf("Failed calculate price of cloud func: %v", err)
 	}
@@ -77,10 +85,10 @@ func calcMem(s ServiceInfo, serv ser.Service) float64 {
 func calcCPU(s ServiceInfo, serv ser.Service) float64 {
 	var v float64
 
-	if s.CpuType == "MHz" {
-		v = mhzToGHz(s.CpuUsage)*msToS(s.Time)*s.Invocations - serv.GetPriceInfoBySku(CPUTime).PricingExpression.TieredRates[1].StartUsageAmount
+	if s.CPUType == "MHz" {
+		v = mhzToGHz(s.CPUUsage)*msToS(s.Time)*s.Invocations - serv.GetPriceInfoBySku(CPUTime).PricingExpression.TieredRates[1].StartUsageAmount
 	} else {
-		v = s.CpuUsage*msToS(s.Time)*s.Invocations - serv.GetPriceInfoBySku(CPUTime).PricingExpression.TieredRates[1].StartUsageAmount
+		v = s.CPUUsage*msToS(s.Time)*s.Invocations - serv.GetPriceInfoBySku(CPUTime).PricingExpression.TieredRates[1].StartUsageAmount
 	}
 
 	if v < 0 {
