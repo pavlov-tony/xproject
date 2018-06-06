@@ -5,18 +5,26 @@ import (
 	"fmt"
 	"log"
 	"time"
+	// TODO: imports must be from src/ - github.com/pavlov-tony/xproject/internal/cloud/gcp/utils/billingutils
 	"xproject/internal/cloud/gcp/utils/billingutils"
 	"xproject/internal/cloud/gcp/utils/storageutils"
 
 	"cloud.google.com/go/storage"
 )
 
+const (
+	pkgLogPref = "cloud billing"
+)
+
+// TODO: it's not good place for main, if your need test you package use unit tests *_test.go
 func main() {
 	ctx := context.Background()
 
+	// TODO: don't forget about commenting your code
 	client, err := storage.NewClient(ctx)
 	if err != nil {
-		log.Fatal(err)
+		// TODO: logging must be more informative
+		log.Fatalf("%v: new client", pkgLogPref, err)
 	}
 
 	objects, err := storageutils.FetchBucketObjects(ctx, client, "churomann-bucket")
@@ -31,6 +39,7 @@ func main() {
 	for _, sb := range serviceBills {
 		sum += sb.Cost
 	}
+	// TODO: use log pkg instead fmt
 	fmt.Println("Full cost from bucket:", sum)
 
 	sum = 0

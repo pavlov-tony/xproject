@@ -1,3 +1,4 @@
+// TODO: storageutil.go should to use - storage.go or fetchdata.go or else
 package storageutils
 
 import (
