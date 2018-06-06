@@ -1,3 +1,4 @@
+// TODO: test file usually build as testfilename_test.go
 package storageutils
 
 import (

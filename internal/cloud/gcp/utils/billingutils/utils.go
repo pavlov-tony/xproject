@@ -1,3 +1,6 @@
+// TODO: I prefer shortage names like ubill if this does not bad for readability
+// TODO: utils.go - file names must describe content, it cant be general word
+// for example u can use fetch.go or others
 package billingutils
 
 import (
@@ -24,6 +27,7 @@ type ServiceBill struct {
 // NOTE: daily??
 type ServicesBills []ServiceBill
 
+// TODO: in pull req can't be commented unused code
 // type GCPTableAttributes [5]string
 
 // Set in appropriate type ServiceBill attributes frow filtered row of billing table in bucket
@@ -51,6 +55,7 @@ func (sb *ServiceBill) setAttributes(row []string) {
 
 // Select appropriate columns from GCP billing table from bucket
 func filterGCPTableRow(row []string) (res [5]string) {
+	// TODO: is there no need check out of range
 	res[0] = row[17]
 	res[1] = row[2]
 	res[2] = row[3]
