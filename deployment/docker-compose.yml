@@ -1,0 +1,33 @@
+version: '3.1'
+services:
+    golang:
+        build:
+            dockerfile: Golang.Dockerfile
+            context: ../build/
+        container_name: golang-app
+        volumes:
+            - ../.:/go/src/github.com/pavlov-tony/xproject
+        env_file:
+            - ../build/go.env
+        ports:
+            - '8080:8080'
+        networks:
+            - default-network
+        depends_on:
+            - db
+        stdin_open: true
+        tty: true
+    db:
+        build:
+            dockerfile: PG.Dockerfile
+            context: ../build/
+        container_name: db-app
+        volumes:
+            - ../build/initdb/.:/initdb/
+        ports:
+            - '5432:5432'
+        networks:
+            - default-network
+networks:
+  default-network:
+      driver: bridge
