@@ -1,9 +1,9 @@
-// utils for creating linear trend line
+// Package approx is util for creating linear trend line
 package approx
 
 import "fmt"
 
-// Least squares with linear approximation
+// LinearTrend implements least squares method
 // http://www.ekonomika-st.ru/drugie/metodi/metodi-prognoz-1-5.html
 //
 // Original function value: yOrig
