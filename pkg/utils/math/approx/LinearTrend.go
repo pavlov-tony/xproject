@@ -1,9 +1,7 @@
-// There are to common types of prediction
-// 1) one-step ahead prediction
-// 2) long-term prediction (iterative, recursive, direct methods)
-package forecaster
+// utils for creating linear trend line
+package approx
 
-import "errors"
+import "fmt"
 
 // Least squares with linear approximation
 // http://www.ekonomika-st.ru/drugie/metodi/metodi-prognoz-1-5.html
@@ -20,8 +18,8 @@ import "errors"
 //
 // params:
 // data - data
-// ah - ahead x prediction
-func forecast(data []float64, ahX int) (float64, error) {
+// ahX - steps ahead prediction
+func LinearTrend(data []float64, ahX int) (float64, error) {
 	var a, b, n, sumY, sumX, sumPow2X, sumXY float64
 
 	n = float64(len(data))
@@ -35,12 +33,13 @@ func forecast(data []float64, ahX int) (float64, error) {
 	}
 
 	if n == 0 || sumX == 0 && sumPow2X == 0 {
-		return 0, errors.New("Forecast: Division by zero")
+		return 0, fmt.Errorf("linear trend: division by zero")
 	}
 
-	// FIXME: division by zero
 	a = (sumXY - sumX*sumY/n) / (sumPow2X - sumX*sumX/n)
 	b = sumY/n - a*sumX/n
 
-	return a*float64(ahX) + b, nil
+	res := a*float64(ahX) + b
+
+	return res, nil
 }
