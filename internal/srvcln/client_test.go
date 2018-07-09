@@ -34,6 +34,6 @@ func Test_Client_GetServiceId(t *testing.T) {
 	}
 
 	if tId != id {
-		t.Error("Different ids")
+		t.Errorf("Different ids: expected: %v, got: %v", id, tId)
 	}
 }

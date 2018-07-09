@@ -34,27 +34,27 @@ func Calculate(s ServiceInfo, serviceId string) (float64, error) {
 
 	serv, err := ser.NewClient(serviceId)
 	if err != nil {
-		return 0, fmt.Errorf("Failed to calculate price of cloud func: %v", err)
+		return 0, fmt.Errorf("failed to calculate price of cloud func: %v", err)
 	}
 
 	priceCPU, err := serv.GetPriceInfoBySku(CPUTime)
 	if err != nil {
-		return 0, fmt.Errorf("Failed to calculate price of cloud func: %v", err)
+		return 0, fmt.Errorf("failed to calculate price of cloud func: %v", err)
 	}
 
 	priceMem, err := serv.GetPriceInfoBySku(MemoryTime)
 	if err != nil {
-		return 0, fmt.Errorf("Failed to calculate price of cloud func: %v", err)
+		return 0, fmt.Errorf("failed to calculate price of cloud func: %v", err)
 	}
 
 	priceNet, err := serv.GetPriceInfoBySku(NetworkEgress)
 	if err != nil {
-		return 0, fmt.Errorf("Failed to calculate price of cloud func: %v", err)
+		return 0, fmt.Errorf("failed to calculate price of cloud func: %v", err)
 	}
 
 	priceInvoc, err := serv.GetPriceInfoBySku(Invocations)
 	if err != nil {
-		return 0, fmt.Errorf("Failed to calculate price of cloud func: %v", err)
+		return 0, fmt.Errorf("failed to calculate price of cloud func: %v", err)
 	}
 
 	cpu := calcCPU(s, priceCPU) * (float64(priceCPU.PricingExpression.TieredRates[1].UnitPrice.Units) +

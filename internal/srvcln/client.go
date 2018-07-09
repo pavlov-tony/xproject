@@ -25,12 +25,12 @@ func NewClient(serviceId string) (*Service, error) {
 
 	billClient, err := b.New(client)
 	if err != nil {
-		return nil, fmt.Errorf("Failed to get sku list: %v", err)
+		return nil, fmt.Errorf("failed to get sku list: %v", err)
 	}
 
 	l, err := billClient.Services.Skus.List("services/" + serviceId).Do()
 	if err != nil {
-		return nil, fmt.Errorf("Failed to get sku list: %v", err)
+		return nil, fmt.Errorf("failed to get sku list: %v", err)
 	}
 
 	s.serviceId = serviceId
@@ -39,7 +39,7 @@ func NewClient(serviceId string) (*Service, error) {
 		s.skus = append(s.skus, *(l.Skus[i]))
 	}
 	if s.skus == nil {
-		return nil, fmt.Errorf("Empty sku list")
+		return nil, fmt.Errorf("empty sku list")
 	}
 
 	return s, nil
@@ -56,13 +56,13 @@ func (s *Service) GetPriceInfoBySku(id string) (price b.PricingInfo, err error) 
 		}
 	}
 
-	return price, fmt.Errorf("Failed to find sku with id: %v", id)
+	return price, fmt.Errorf("failed to find sku with id: %v", id)
 }
 
 // returns serviceId
 func (s *Service) GetServiceId() (string, error) {
 	if s.serviceId == "" {
-		return "", fmt.Errorf("Empty service id")
+		return "", fmt.Errorf("empty service id")
 	} else {
 		return s.serviceId, nil
 	}
