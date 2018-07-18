@@ -7,11 +7,11 @@ import (
 	"time"
 )
 
-// Check obj and client satisfy
+// Check if obj and client implement the interfaces
 var _ IDB = (*sql.DB)(nil)
 var _ IClient = (*Client)(nil)
 
-// IDB interface of slq.DB
+// IDB is interface of sql.DB
 type IDB interface {
 	PingContext(ctx context.Context) error
 	Ping() error
@@ -34,7 +34,7 @@ type IDB interface {
 	Conn(ctx context.Context) (*sql.Conn, error)
 }
 
-// IClient interface of Client type
+// IClient is interface of Client type
 type IClient interface {
 	Close() error
 	Ping() error

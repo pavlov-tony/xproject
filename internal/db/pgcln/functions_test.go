@@ -1,17 +1,12 @@
-// +build integration
-
 package pgcln
 
 import (
+	"fmt"
 	"os"
 	"testing"
-
-	_ "github.com/lib/pq"
 )
 
-//
-func TestInteg_NewPing(t *testing.T) {
-
+func Test_Client_SelLastGcpCsvObject(t *testing.T) {
 	conf := Config{
 		Host:     os.Getenv(EnvDBHost),
 		Port:     os.Getenv(EnvDBPort),
@@ -21,15 +16,16 @@ func TestInteg_NewPing(t *testing.T) {
 		SSLMode:  "disable",
 	}
 
-	pgcln, err := New(conf)
+	pgCln, err := New(conf)
 	if err != nil {
 		t.Fatalf("%v: new client err, %v", pgcLogPref, err)
 	}
-	defer pgcln.Close()
+	defer pgCln.Close()
 
-	// ping
-	err = pgcln.Ping()
+	res, err := pgCln.SelLastGcpCsvObject()
 	if err != nil {
-		t.Fatalf("%v: pg client ping err, %v", pgcLogPref, err)
+		fmt.Println(err)
 	}
+	fmt.Println(res)
+
 }
