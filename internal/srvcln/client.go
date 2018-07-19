@@ -20,7 +20,7 @@ func NewClient(serviceId string) (*Service, error) {
 	s := new(Service)
 
 	client := &http.Client{
-		Transport: &transport.APIKey{Key: os.Getenv("DEVKEY")},
+		Transport: &transport.APIKey{Key: os.Getenv("XPROJECT_GCP_DEVKEY")},
 	}
 
 	billClient, err := b.New(client)
