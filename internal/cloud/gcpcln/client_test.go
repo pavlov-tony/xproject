@@ -1,3 +1,5 @@
+// +build cloud
+
 package gcpcln
 
 import (

@@ -12,5 +12,6 @@ before_script:
 - make deps
 
 script:
-- make lint
-- make unit-test
+#- make lint
+- make integration-test
+- bash scripts/notify_tg.sh
