@@ -95,5 +95,5 @@ debug-down:
 .PHONY: integration-test
 integration-test:
 	@echo "::: running integration tests"
-	-@docker-compose -f `pwd`/deployments/docker-compose-integration.yml up api
+	@docker-compose -f `pwd`/deployments/docker-compose-integration.yml up --abort-on-container-exit --force-recreate
 	@docker-compose -f `pwd`/deployments/docker-compose-integration.yml down

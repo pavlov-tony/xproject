@@ -1,4 +1,4 @@
-version: '3'
+version: '2.1'
 services:
     api:
         build:
@@ -9,7 +9,7 @@ services:
         volumes:
             - ../:/go/src/github.com/pavlov-tony/xproject
         env_file:
-            - ../build/package/dev_config.env
+            - ../build/package/test_config.env
         environment:
             - PROFILE=TEST
         ports:
@@ -19,19 +19,22 @@ services:
         networks: 
             - default-network
         depends_on: 
-            - postgres
+            postgres:
+                condition: service_healthy
     postgres:
         build:
             dockerfile: PG.Dockerfile
             context: ../build/package/
         volumes:
-            - ../scripts/initdb/init_test_db.sh:/docker-entrypoint-initdb.d/init_test_db.sh
+            - ../scripts/initdb/init_tables.sql:/docker-entrypoint-initdb.d/init_tables.sql
         environment:
-            - POSTGRES_USER=xproject-test
-            - POSTGRES_PASSWORD=xproject-test
-        ports:
-            - '5432:5432'
+            - POSTGRES_USER=xproject
+            - POSTGRES_PASSWORD=xproject
         container_name: ${APP_NAME:-xproject}-postgres-test
+        healthcheck:
+            test: ["CMD-SHELL", "pg_isready -U xproject"]
+            interval: 0.5s
+            retries: 4
         networks: 
             - default-network
 
