@@ -6,8 +6,8 @@ import (
 	"testing"
 
 	_ "github.com/lib/pq"
-	"github.com/pavlov-tony/xproject/internal/db/pgcln"
-	"github.com/pavlov-tony/xproject/pkg/cloud/gcptypes"
+	"github.com/radisvaliullin/cloudbilling/internal/db/pgcln"
+	"github.com/radisvaliullin/cloudbilling/pkg/cloud/gcptypes"
 )
 
 func Test_Client_NewClient(t *testing.T) {

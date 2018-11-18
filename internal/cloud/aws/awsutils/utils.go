@@ -15,7 +15,7 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/s3"
 	"github.com/aws/aws-sdk-go-v2/service/s3/s3manager"
 
-	awsmanifest "github.com/pavlov-tony/xproject/pkg/cloud/awsparser/models/manifest"
+	awsmanifest "github.com/radisvaliullin/cloudbilling/pkg/cloud/awsparser/models/manifest"
 )
 
 // FindManifest helps to automagically find the report manifest by

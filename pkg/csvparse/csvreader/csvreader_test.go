@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/pavlov-tony/xproject/pkg/utils"
+	"github.com/radisvaliullin/cloudbilling/pkg/utils"
 )
 
 func TestReadRow(t *testing.T) {

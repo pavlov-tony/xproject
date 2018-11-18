@@ -14,9 +14,9 @@ import (
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 
-	"github.com/pavlov-tony/xproject/internal/cloud/aws/awsutils"
-	"github.com/pavlov-tony/xproject/pkg/cloud/awsparser"
-	"github.com/pavlov-tony/xproject/pkg/cloud/awsparser/models/reportrow"
+	"github.com/radisvaliullin/cloudbilling/internal/cloud/aws/awsutils"
+	"github.com/radisvaliullin/cloudbilling/pkg/cloud/awsparser"
+	"github.com/radisvaliullin/cloudbilling/pkg/cloud/awsparser/models/reportrow"
 )
 
 // CaurMeta describe the requested report

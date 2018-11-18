@@ -9,7 +9,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/pavlov-tony/xproject/internal/handlers"
+	"github.com/radisvaliullin/cloudbilling/internal/handlers"
 
 	"github.com/buaazp/fasthttprouter"
 	"github.com/seatgeek/graceful_listener"

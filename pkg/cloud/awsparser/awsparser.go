@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/pavlov-tony/xproject/pkg/cloud/awsparser/models/reportrow"
-	"github.com/pavlov-tony/xproject/pkg/csvparse/csvreader"
-	"github.com/pavlov-tony/xproject/pkg/csvparse/rawcsv"
+	"github.com/radisvaliullin/cloudbilling/pkg/cloud/awsparser/models/reportrow"
+	"github.com/radisvaliullin/cloudbilling/pkg/csvparse/csvreader"
+	"github.com/radisvaliullin/cloudbilling/pkg/csvparse/rawcsv"
 )
 
 var (

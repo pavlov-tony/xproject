@@ -7,7 +7,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/pavlov-tony/xproject/pkg/cloud/gcptypes"
+	"github.com/radisvaliullin/cloudbilling/pkg/cloud/gcptypes"
 	// Don't forget add driver importing to main
 	// _ "github.com/lib/pq"
 )

@@ -8,7 +8,7 @@ import (
 	"time"
 
 	_ "github.com/lib/pq"
-	"github.com/pavlov-tony/xproject/pkg/cloud/gcptypes"
+	"github.com/radisvaliullin/cloudbilling/pkg/cloud/gcptypes"
 )
 
 // TestGcpAccount tests adding account into db, listing and removing it
