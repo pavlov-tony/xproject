@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/pavlov-tony/xproject.svg?branch=master)](https://travis-ci.org/pavlov-tony/xproject)
+[![Build Status](https://travis-ci.org/radisvaliullin/xproject.svg?branch=master)](https://travis-ci.org/radisvaliullin/xproject)
 
 # xproject
 X Project
@@ -25,7 +25,7 @@ to attach from vscode add the following configuration to .vscode/launch.json
             "type": "go",
             "request": "launch",
             "mode": "remote",
-            "remotePath": "/go/src/github.com/pavlov-tony/xproject/cmd/xproject",
+            "remotePath": "/go/src/github.com/radisvaliullin/xproject/cmd/xproject",
             "port": 2345,
             "host": "127.0.0.1",
             "program": "${workspaceRoot}/cmd/xproject",

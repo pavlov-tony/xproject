@@ -7,7 +7,7 @@ services:
         image: ${APP_NAME:-xproject}:base
         command: sh -c "go run *.go"
         volumes:
-            - ../:/go/src/github.com/pavlov-tony/xproject
+            - ../:/go/src/github.com/radisvaliullin/xproject
         env_file:
             - ../build/package/dev_config.env
         environment:

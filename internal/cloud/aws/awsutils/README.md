@@ -25,7 +25,7 @@ manifest path: reportprefix/test-somereport/20180801-20180901/test-somereport-Ma
 --- PASS: TestGetMostRecentReportInterval (1.66s)
 	utils_test.go:50: 20180801-20180901
 PASS
-ok  	github.com/pavlov-tony/xproject/internal/cloud/aws/awsutils	5.005s
+ok  	github.com/radisvaliullin/xproject/internal/cloud/aws/awsutils	5.005s
 
 Compilation finished at Sat Sep 22 16:44:33
 
