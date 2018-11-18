@@ -15,7 +15,7 @@ manifest path: reportprefix/test-somereport/20180801-20180901/test-somereport-Ma
 		  Compression: GZIP,
 		  Format: textORcsv,
 		  ReportName: "test-somereport",
-		  S3Bucket: "user-xproject-test-bucket-12345678",
+		  S3Bucket: "user-cloudbilling-test-bucket-12345678",
 		  S3Prefix: "reportprefix",
 		  S3Region: eu-central-1,
 		  TimeUnit: HOURLY
@@ -25,7 +25,7 @@ manifest path: reportprefix/test-somereport/20180801-20180901/test-somereport-Ma
 --- PASS: TestGetMostRecentReportInterval (1.66s)
 	utils_test.go:50: 20180801-20180901
 PASS
-ok  	github.com/radisvaliullin/xproject/internal/cloud/aws/awsutils	5.005s
+ok  	github.com/radisvaliullin/cloudbilling/internal/cloud/aws/awsutils	5.005s
 
 Compilation finished at Sat Sep 22 16:44:33
 

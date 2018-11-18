@@ -4,12 +4,12 @@ services:
         build:
             dockerfile: Base.Dockerfile
             context: ../build/package/
-        image: ${APP_NAME:-xproject}:base
+        image: ${APP_NAME:-cloudbilling}:base
         security_opt:
             - seccomp:unconfined
         command: dlv debug . -l 0.0.0.0:2345 --headless=true --log=true
         volumes:
-            - ../:/go/src/github.com/radisvaliullin/xproject
+            - ../:/go/src/github.com/radisvaliullin/cloudbilling
         env_file:
             - ../build/package/dev_config.env
         environment:
@@ -20,7 +20,7 @@ services:
         expose:
             - "2345"
             - "8080"
-        container_name: ${APP_NAME:-xproject}-api-debug
+        container_name: ${APP_NAME:-cloudbilling}-api-debug
         networks: 
             - default-network
         depends_on: 
@@ -30,11 +30,11 @@ services:
             dockerfile: PG.Dockerfile
             context: ../build/package/
         environment:
-            - POSTGRES_USER=xproject
-            - POSTGRES_PASSWORD=xproject
+            - POSTGRES_USER=cloudbilling
+            - POSTGRES_PASSWORD=cloudbilling
         ports:
             - '5432:5432'
-        container_name: ${APP_NAME:-xproject}-postgres
+        container_name: ${APP_NAME:-cloudbilling}-postgres
         networks: 
             - default-network
 

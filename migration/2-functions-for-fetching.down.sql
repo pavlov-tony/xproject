@@ -1,1 +1,1 @@
-DROP FUNCTION xproject.sel_last_report();
+DROP FUNCTION cloudbilling.sel_last_report();

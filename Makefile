@@ -1,16 +1,16 @@
 include build/package/dev_config.env
 
-PROOT=/go/src/github.com/radisvaliullin/xproject
+PROOT=/go/src/github.com/radisvaliullin/cloudbilling
 # image name for docker
-IMAGE_NAME=xproject
+IMAGE_NAME=cloudbilling
 
 DOCKER_RUN_DEV=@docker run --rm -i -v `pwd`:${PROOT} -v `pwd`/build/.gometalinter.json:/go/src/.gometalinter.json -w ${PROOT}
-APP_DB_USER=xproject
-APP_DB_PWD=xproject
+APP_DB_USER=cloudbilling
+APP_DB_PWD=cloudbilling
 
 .PHONY: db/volume
 db/volume:
-	@docker volume create xproject-pgdata
+	@docker volume create cloudbilling-pgdata
 
 .PHONY: build-base
 build-base:
@@ -36,8 +36,8 @@ check-%:
 .PHONY: db/migrations
 db/migrations: check-CMD db/run
 	@echo "::: running migrations..."
-	-@migrate -database "postgres://${APP_DB_USER}:${APP_DB_PWD}@localhost:5432/xproject?sslmode=disable" -path migrations $$CMD
-	@docker stop xproject-postgres
+	-@migrate -database "postgres://${APP_DB_USER}:${APP_DB_PWD}@localhost:5432/cloudbilling?sslmode=disable" -path migrations $$CMD
+	@docker stop cloudbilling-postgres
 
 #RUN actions
 .PHONY: unit-test

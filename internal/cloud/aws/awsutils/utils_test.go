@@ -41,7 +41,7 @@ func TestGetMostRecentReportInterval(t *testing.T) {
 	}
 
 	rd := caurs.ReportDefinition{
-		S3Bucket:   aws.String("user-xproject-test-bucket-12345678"),
+		S3Bucket:   aws.String("user-cloudbilling-test-bucket-12345678"),
 		S3Prefix:   aws.String("reportprefix"),
 		ReportName: aws.String("test-somereport"),
 	}

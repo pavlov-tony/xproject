@@ -4,17 +4,17 @@ services:
         build:
             dockerfile: Base.Dockerfile
             context: ../build/package/
-        image: ${APP_NAME:-xproject}:base
+        image: ${APP_NAME:-cloudbilling}:base
         command: sh -c "go run *.go"
         volumes:
-            - ../:/go/src/github.com/radisvaliullin/xproject
+            - ../:/go/src/github.com/radisvaliullin/cloudbilling
         env_file:
             - ../build/package/dev_config.env
         environment:
             - PROFILE=DEV
         ports:
             - "8080:8080"
-        container_name: ${APP_NAME:-xproject}-api
+        container_name: ${APP_NAME:-cloudbilling}-api
         networks: 
             - default-network
         depends_on: 
@@ -24,13 +24,13 @@ services:
             dockerfile: PG.Dockerfile
             context: ../build/package/
         volumes:
-            - xproject-pgdata:/var/lib/postgresql/data
+            - cloudbilling-pgdata:/var/lib/postgresql/data
         environment:
-            - POSTGRES_USER=xproject
-            - POSTGRES_PASSWORD=xproject
+            - POSTGRES_USER=cloudbilling
+            - POSTGRES_PASSWORD=cloudbilling
         ports:
             - '5432:5432'
-        container_name: ${APP_NAME:-xproject}-postgres
+        container_name: ${APP_NAME:-cloudbilling}-postgres
         networks: 
             - default-network
 
@@ -38,6 +38,6 @@ networks:
   default-network:
 
 volumes:
-    xproject-pgdata:
+    cloudbilling-pgdata:
         external:
-            name: xproject-pgdata
+            name: cloudbilling-pgdata
