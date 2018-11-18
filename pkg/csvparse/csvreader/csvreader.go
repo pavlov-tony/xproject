@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/pavlov-tony/xproject/pkg/csvparse/csvutils"
+	"github.com/radisvaliullin/cloudbilling/pkg/csvparse/csvutils"
 )
 
 // CsvReader is a type for reading a CSV file row-by-row, with the

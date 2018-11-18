@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/pavlov-tony/xproject/internal/db/pgcln"
+	"github.com/radisvaliullin/cloudbilling/internal/db/pgcln"
 )
 
 func Test_Client_Fetch(t *testing.T) {

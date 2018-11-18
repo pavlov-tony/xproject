@@ -16,4 +16,4 @@ RUN go get github.com/jstemmer/go-junit-report
 RUN go get github.com/alecthomas/gometalinter && \
   gometalinter --install >/dev/null
   
-WORKDIR /go/src/github.com/pavlov-tony/xproject/cmd/xproject
+WORKDIR /go/src/github.com/radisvaliullin/cloudbilling/cmd/cloudbilling

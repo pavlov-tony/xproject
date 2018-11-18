@@ -1,1 +1,1 @@
-DROP SCHEMA xproject CASCADE;
+DROP SCHEMA cloudbilling CASCADE;

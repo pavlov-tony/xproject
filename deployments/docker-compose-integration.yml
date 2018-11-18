@@ -4,18 +4,18 @@ services:
         build:
             dockerfile: Base.Dockerfile
             context: ../build/package/
-        image: ${APP_NAME:-xproject}:base
+        image: ${APP_NAME:-cloudbilling}:base
         command: sh -c "go test -v ./... -tags integration"
         volumes:
-            - ../:/go/src/github.com/pavlov-tony/xproject
+            - ../:/go/src/github.com/radisvaliullin/cloudbilling
         env_file:
             - ../build/package/dev_config.env
         environment:
             - PROFILE=TEST
         ports:
             - "8080:8080"
-        working_dir: /go/src/github.com/pavlov-tony/xproject
-        container_name: ${APP_NAME:-xproject}-api-test
+        working_dir: /go/src/github.com/radisvaliullin/cloudbilling
+        container_name: ${APP_NAME:-cloudbilling}-api-test
         networks: 
             - default-network
         depends_on: 
@@ -27,11 +27,11 @@ services:
         volumes:
             - ../scripts/initdb/init_test_db.sh:/docker-entrypoint-initdb.d/init_test_db.sh
         environment:
-            - POSTGRES_USER=xproject-test
-            - POSTGRES_PASSWORD=xproject-test
+            - POSTGRES_USER=cloudbilling-test
+            - POSTGRES_PASSWORD=cloudbilling-test
         ports:
             - '5432:5432'
-        container_name: ${APP_NAME:-xproject}-postgres-test
+        container_name: ${APP_NAME:-cloudbilling}-postgres-test
         networks: 
             - default-network
 

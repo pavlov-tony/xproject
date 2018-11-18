@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/pavlov-tony/xproject/pkg/utils"
+	"github.com/radisvaliullin/cloudbilling/pkg/utils"
 )
 
 // Summary represents the summary

@@ -2,7 +2,7 @@ package awsutils
 
 import (
 	caur "github.com/aws/aws-sdk-go-v2/service/costandusagereportservice"
-	awsmanifest "github.com/pavlov-tony/xproject/pkg/cloud/awsparser/models/manifest"
+	awsmanifest "github.com/radisvaliullin/cloudbilling/pkg/cloud/awsparser/models/manifest"
 )
 
 // CaurInfo - useful information about an AWS Cost and Usage Report which is

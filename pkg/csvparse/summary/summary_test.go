@@ -3,7 +3,7 @@ package summary
 import (
 	"testing"
 
-	"github.com/pavlov-tony/xproject/pkg/utils"
+	"github.com/radisvaliullin/cloudbilling/pkg/utils"
 )
 
 func TestAddStringValues(t *testing.T) {

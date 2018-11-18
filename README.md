@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/pavlov-tony/xproject.svg?branch=master)](https://travis-ci.org/pavlov-tony/xproject)
+[![Build Status](https://travis-ci.org/radisvaliullin/cloudbilling.svg?branch=master)](https://travis-ci.org/radisvaliullin/cloudbilling)
 
-# xproject
+# cloudbilling
 X Project
 
 ### Install
@@ -25,10 +25,10 @@ to attach from vscode add the following configuration to .vscode/launch.json
             "type": "go",
             "request": "launch",
             "mode": "remote",
-            "remotePath": "/go/src/github.com/pavlov-tony/xproject/cmd/xproject",
+            "remotePath": "/go/src/github.com/radisvaliullin/cloudbilling/cmd/cloudbilling",
             "port": 2345,
             "host": "127.0.0.1",
-            "program": "${workspaceRoot}/cmd/xproject",
+            "program": "${workspaceRoot}/cmd/cloudbilling",
             "env": {},
             "args": ["-v"],
             "showLog": true,

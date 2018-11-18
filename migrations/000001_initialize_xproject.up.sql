@@ -1,19 +1,19 @@
-CREATE SCHEMA xproject;
+CREATE SCHEMA cloudbilling;
 
-CREATE TABLE xproject.accounts (
+CREATE TABLE cloudbilling.accounts (
     id SERIAL PRIMARY KEY,
     gcp_account_info text
 );
 
-CREATE TABLE xproject.gcp_csv_files (
+CREATE TABLE cloudbilling.gcp_csv_files (
     id SERIAL PRIMARY KEY,
     name text,
     bucket text,
     time_created timestamp without time zone,
-    account_id integer REFERENCES xproject.accounts(id)
+    account_id integer REFERENCES cloudbilling.accounts(id)
 );
 
-CREATE TABLE xproject.service_bills (
+CREATE TABLE cloudbilling.service_bills (
     id SERIAL PRIMARY KEY,
     line_item text,
     start_time timestamp without time zone,
@@ -22,5 +22,5 @@ CREATE TABLE xproject.service_bills (
     currency text,
     project_id text,
     description text,
-    gcp_csv_file_id integer REFERENCES xproject.gcp_csv_files(id)
+    gcp_csv_file_id integer REFERENCES cloudbilling.gcp_csv_files(id)
 );

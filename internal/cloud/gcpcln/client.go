@@ -13,9 +13,9 @@ import (
 	"fmt"
 
 	"cloud.google.com/go/storage"
-	"github.com/pavlov-tony/xproject/internal/db/pgcln"
-	"github.com/pavlov-tony/xproject/pkg/cloud/gcpparser"
-	"github.com/pavlov-tony/xproject/pkg/cloud/gcptypes"
+	"github.com/radisvaliullin/cloudbilling/internal/db/pgcln"
+	"github.com/radisvaliullin/cloudbilling/pkg/cloud/gcpparser"
+	"github.com/radisvaliullin/cloudbilling/pkg/cloud/gcptypes"
 	"google.golang.org/api/iterator"
 )
 
